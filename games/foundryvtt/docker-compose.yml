@@ -10,12 +10,16 @@ services:
     volumes:
       - nginx-data:/data
       - /etc/letsencrypt:/etc/letsencrypt
+    networks:
+      - nginx
   foundryvtt:
     container_name: foundry
     image: mcmillanator/foundryvtt
     restart: unless-stopped
     volumes:
       - ./foundrydata:/foundrydata
+    networks:
+      - nginx
   #transmission:
   #  image: lscr.io/linuxserver/transmission:latest
   #  container_name: transmission
@@ -39,11 +43,8 @@ services:
   #  restart: unless-stopped
 
 networks:
-  default:
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.21.0.0/16
+  nginx:
+    external: true
 volumes:
   nginx-data:
   letsencrypt:

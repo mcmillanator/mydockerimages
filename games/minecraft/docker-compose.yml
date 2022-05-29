@@ -1,0 +1,16 @@
+version: '3'
+services:
+  minecraft:
+    container_name: minecraft
+    image: mcmillanator/minecraft
+    restart: unless-stopped
+    networks:
+      - nginx 
+    volumes:
+      - minecraftdata:/minecraftdata
+
+networks:
+  nginx:
+    external: true
+volumes:
+  minecraftdata:
