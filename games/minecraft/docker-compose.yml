@@ -7,10 +7,10 @@ services:
     networks:
       - nginx 
     volumes:
-      - minecraftdata:/minecraftdata
+      - minecraft:/minecraft
 
 networks:
   nginx:
     external: true
 volumes:
-  minecraftdata:
+  minecraft:
