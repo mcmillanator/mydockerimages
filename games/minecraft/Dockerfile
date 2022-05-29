@@ -2,7 +2,8 @@ FROM openjdk
 
 WORKDIR /minecraft
 
-ADD ./minecraft.jar .
+ADD ./files/minecraft.jar .
+ADD ./files/eula.txt .
 RUN useradd minecraft \
 		&& chown minecraft /minecraft
 
