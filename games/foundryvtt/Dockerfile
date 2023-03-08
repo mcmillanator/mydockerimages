@@ -1,4 +1,4 @@
-FROM node:16-alpine AS build
+FROM node:14-alpine AS build
 
 # Install dependencies
 RUN apk update && apk add --no-cache build-base python3
@@ -14,7 +14,7 @@ ENV FOUNDRY_VTT_TIMED_URL=$TIMED_URL \
 RUN wget -O /tmp/foundry.zip ${FOUNDRY_VTT_TIMED_URL}
 RUN    unzip -d ${FOUNDRY_VTT_DIR} /tmp/foundry.zip
 
-FROM node:16-alpine
+FROM node:14-alpine
 
 # Set environment variables
 ENV FOUNDRY_VTT_DIR=/opt/foundryvtt \
