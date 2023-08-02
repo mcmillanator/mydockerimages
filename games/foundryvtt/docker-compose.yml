@@ -1,54 +1,23 @@
 version: '3'
 services:
-  proxy:
-    container_name: nginx
-    image: 'jc21/nginx-proxy-manager:latest'
-    restart: unless-stopped
-    ports:
-      - '80:80'
-      - '443:443'
-    volumes:
-      - nginx-data:/data
-      - /etc/letsencrypt:/etc/letsencrypt
-    networks:
-      - nginx
   foundryvtt:
-    container_name: foundry
-    image: mcmillanator/foundryvtt
-    restart: unless-stopped
+    image: mcmillanator/foundryvtt:latest
+    environment:
+      - FOUNDRY_VTT_DATA_DIR=/data/foundryvtt
+      - FOUNDRY_VTT_PORT=30000
+    restart: always
     volumes:
-      - ./foundrydata:/foundrydata
+      - foundryvtt_data:/data/foundryvtt
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:30000/"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
     networks:
       - nginx
-  #transmission:
-  #  image: lscr.io/linuxserver/transmission:latest
-  #  container_name: transmission
-  #  environment:
-  #    - PUID=1000
-  #    - PGID=1000
-  #    #- TZ=Europe/London
-  #    #- TRANSMISSION_WEB_HOME=/combustion-release/ #optional
-  #    - USER=stan
-  #    - PASS=zTOqYqxCfB8zB6IiXfyvo2uCyRo9I9GJOb0me5bBkKBNjrLJnza6SKUyvijob
-  #    #- WHITELIST=iplist #optional
-  #    #- PEERPORT=peerport #optional
-  #    - HOST_WHITELIST=transmission.covecode.com #optional
-  #  volumes:
-  #    - ./transmission-config:/config
-  #    - ./transmission-data:/downloads
-  #    - ./transmission-watch:/watch
-  #  ports:
-  #    - 51413:51413
-  #    - 51413:51413/udp
-  #  restart: unless-stopped
 
 networks:
   nginx:
     external: true
 volumes:
-  nginx-data:
-  letsencrypt:
-  #foundrydata:
-  #transmission-config:
-  #transmission-data:
-  #transmission-watch:
+  foundryvtt_data:

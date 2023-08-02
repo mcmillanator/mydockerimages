@@ -1,0 +1,37 @@
+version: '3'
+services:
+  app:
+    container_name: homeassistant
+    hostname: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    volumes:
+      - ./data/home-assistant:/config
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+#    ports:
+#      - 8124:8124
+#      - 8123:8123
+## UPNP port 1900
+#      - 1900:1900/udp
+## mDNS port 5353
+#      - 5353:5353/udp
+#      - 1902:1900/udp
+#      - 5352:5353/udp
+#    networks:
+#      docker_default:
+#      homeassistant:
+#
+#networks:
+#  docker_default:
+#    external: true
+#  homeassistant:
+#    driver: bridge
+#    ipam:
+#      config:
+#        - subnet: 172.30.0.0/16
+#          gateway: 172.30.0.1
+
+volumes:
+  ha_config:

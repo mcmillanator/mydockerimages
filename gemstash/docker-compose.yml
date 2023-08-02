@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: .
+    image: mcmillanator/gemstash
+    hostname: gemstash
+    volumes:
+      - gemstash:/home/.gemstash
+    networks:
+      - docker_default
+
+volumes:
+  gemstash:
+
+networks:
+  docker_default:
+    external: true

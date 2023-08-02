@@ -1,0 +1,18 @@
+services:
+  app:
+    container_name: rhasspy
+    image: rhasspy/rhasspy
+    command: --user-profiles /profiles --profile en
+    ports:
+      - 1233:1233
+    volumes:
+      - "./data:/profiles"
+      - "/etc/localtime:/etc/localtime:ro"
+    devices:
+      - "/dev/snd:/dev/snd"
+    networks:
+      -  docker_default
+
+networks:
+  docker_default:
+    external: true
