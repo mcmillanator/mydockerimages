@@ -1,0 +1,10 @@
+alias: Heat 75
+sequence:
+  - service: remote.send_command
+    target:
+      entity_id: remote.universal_remote_remote
+    data:
+      device: ac
+      command: heat_75
+mode: single
+icon: mdi:air-conditioner
