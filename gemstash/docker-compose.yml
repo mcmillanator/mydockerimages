@@ -4,6 +4,7 @@ services:
       context: .
     image: mcmillanator/gemstash
     hostname: gemstash
+    restart: always
     volumes:
       - gemstash:/home/.gemstash
     networks:
