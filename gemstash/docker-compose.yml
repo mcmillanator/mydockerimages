@@ -8,11 +8,11 @@ services:
     volumes:
       - gemstash:/home/.gemstash
     networks:
-      - docker_default
+      - nginx
 
 volumes:
   gemstash:
 
 networks:
-  docker_default:
+  nginx:
     external: true

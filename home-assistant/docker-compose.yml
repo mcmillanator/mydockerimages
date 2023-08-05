@@ -20,11 +20,11 @@ services:
 #      - 1902:1900/udp
 #      - 5352:5353/udp
 #    networks:
-#      docker_default:
+#      nginx:
 #      homeassistant:
 #
 #networks:
-#  docker_default:
+#  nginx:
 #    external: true
 #  homeassistant:
 #    driver: bridge

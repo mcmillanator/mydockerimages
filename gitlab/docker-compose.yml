@@ -18,7 +18,7 @@ services:
       - data:/var/opt/gitlab
     shm_size: '256m'
     networks:
-      docker_default:
+      nginx:
 
 volumes:
   config:
@@ -26,5 +26,5 @@ volumes:
   data:
 
 networks:
-  docker_default:
+  nginx:
     external: true

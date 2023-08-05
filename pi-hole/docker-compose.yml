@@ -26,11 +26,11 @@ services:
     networks:
       pihole_network:
         ipv4_address: 172.25.0.10
-      docker_default:
+      nginx:
 
 
 networks:
-  docker_default:
+  nginx:
     external: true
   pihole_network:
     driver: bridge

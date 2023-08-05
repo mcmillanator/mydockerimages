@@ -12,10 +12,10 @@ services:
       - nginx-data:/data
       - letsencrypt:/etc/letsencrypt
     networks:
-      - docker_default
+      - nginx
 
 networks:
-  docker_default:
+  nginx:
     external: true
 volumes:
   nginx-data:
