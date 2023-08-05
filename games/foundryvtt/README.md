@@ -10,3 +10,7 @@
 ## Docs
 * Install instructions https://foundryvtt.com/article/installation/
 * Download link https://foundryvtt.com/community/keldari/licenses
+## Ports
+30000
+80
+443
