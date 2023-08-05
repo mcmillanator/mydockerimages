@@ -1,13 +1,14 @@
 version: '3'
 services:
-  foundryvtt:
+  app:
+    hostname: foundry
     image: mcmillanator/foundryvtt:latest
     environment:
       - FOUNDRY_VTT_DATA_DIR=/data/foundryvtt
       - FOUNDRY_VTT_PORT=30000
     restart: always
     volumes:
-      - foundryvtt_data:/data/foundryvtt
+      - foundry:/data/foundryvtt
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:30000/"]
       interval: 5s
@@ -20,4 +21,4 @@ networks:
   nginx:
     external: true
 volumes:
-  foundryvtt_data:
+  foundry:
