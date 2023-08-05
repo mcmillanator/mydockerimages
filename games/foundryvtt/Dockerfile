@@ -12,7 +12,7 @@ ENV FOUNDRY_VTT_TIMED_URL=$TIMED_URL \
 
 # Download and extract Foundry VTT
 RUN wget -O /tmp/foundry.zip ${FOUNDRY_VTT_TIMED_URL}
-RUN    unzip -d ${FOUNDRY_VTT_DIR} /tmp/foundry.zip
+RUN unzip -d ${FOUNDRY_VTT_DIR} /tmp/foundry.zip
 
 FROM node:16-alpine
 
@@ -27,9 +27,6 @@ COPY ./scripts/start-foundryvtt.sh ${FOUNDRY_VTT_START_SCRIPT}
 
 # Change working directory
 WORKDIR ${FOUNDRY_VTT_DIR}
-
-# Install dependencies
-RUN npm install
 
 # Expose port
 EXPOSE ${FOUNDRY_VTT_PORT}
